@@ -5,22 +5,29 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.2</version>
+		<version>3.0.0</version>
 		<relativePath/>
 		<!-- lookup parent from repository -->
 	</parent>
 	<groupId>io.github.kevinpan45</groupId>
 	<artifactId>basic-framework</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.3</version>
 	<properties>
 		<java.version>17</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<spring.cloud-version>2022.0.0-RC3</spring.cloud-version>
+		<lombok.version>1.18.22</lombok.version>
+		<hakari.version>5.0.1</hakari.version>
 	</properties>
 	<dependencies>
 		<!-- Spring security -->
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -57,7 +64,7 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.18.24</version>
+			<version>${lombok.version}</version>
 		</dependency>
 
 		<dependency>
@@ -77,13 +84,6 @@
 			<artifactId>spring-cloud-starter-openfeign</artifactId>
 		</dependency>
 
-		<!-- hutool utils -->
-		<dependency>
-			<groupId>cn.hutool</groupId>
-			<artifactId>hutool-all</artifactId>
-			<version>5.8.5</version>
-		</dependency>
-
 		<!-- DB migration flyway-core:7.15.0 last version support MySQL 5.7 -->
 		<dependency>
 			<groupId>org.flywaydb</groupId>
@@ -98,13 +98,12 @@
 		<dependency>
 			<groupId>com.zaxxer</groupId>
 			<artifactId>HikariCP</artifactId>
-			<version>5.0.1</version>
+			<version>${hakari.version}</version>
 		</dependency>
-		<!-- MyBatis ORM framework -->
+		<!-- ORM framework -->
 		<dependency>
-			<groupId>com.baomidou</groupId>
-			<artifactId>mybatis-plus-boot-starter</artifactId>
-			<version>3.5.2</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 	</dependencies>
 
@@ -113,7 +112,7 @@
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>2021.0.3</version>
+				<version>${spring.cloud-version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -126,4 +125,56 @@
 			<url>https://maven.pkg.github.com/kevinpan45/basic-framework</url>
 		</repository>
 	</distributionManagement>
+	<!-- Add Aliyun repository setting -->
+	<repositories>
+		<repository>
+			<id>aliyun</id>
+			<name>aliyun</name>
+			<url>https://maven.aliyun.com/repository/public</url>
+		</repository>
+		<repository>
+			<id>spring</id>
+			<url>https://maven.aliyun.com/repository/spring</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>3.0.0</version>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+			<!-- maven source plugin -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>3.2.1</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>

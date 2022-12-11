@@ -1,33 +1,24 @@
 package io.github.kevinpan45.common.security;
 
-import org.springframework.core.annotation.Order;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
-import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.SecurityFilterChain;
 
-import lombok.extern.slf4j.Slf4j;
-
+@Configuration
 @EnableWebSecurity
-@Slf4j
-@Order(10)
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        // Enable CORS and disable CSRF
-        http = http.cors().and().csrf().disable();
+public class SecurityConfiguration {
 
-        // Set session management to stateless
-        http = http.sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and();
-
-        // Set permissions on endpoints
-        http.authorizeHttpRequests(authorize -> authorize
-                .antMatchers("/i18n/**").permitAll()
-                .antMatchers("/actuator/**").permitAll()
-                .anyRequest().authenticated())
+    @Bean
+    SecurityFilterChain web(HttpSecurity http) throws Exception {
+        http
+                .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers("/i18n/**", "/actuator/**").permitAll()
+                        .anyRequest().authenticated())
                 .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt);
+
+        return http.build();
     }
 }
