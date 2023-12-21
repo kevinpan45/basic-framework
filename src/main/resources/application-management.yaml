@@ -1,0 +1,12 @@
+# Spring Management Server and Endpoint Config
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: env,beans
+  server:
+    port: 8081
+  endpoint:
+    health:
+      show-details: always
