@@ -10,7 +10,7 @@
   	</parent>
 	<groupId>io.github.kevinpan45</groupId>
 	<artifactId>basic-framework</artifactId>
-	<version>0.0.2</version>
+	<version>0.0.2-Dev</version>
 	<properties>
 		<java.version>17</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
