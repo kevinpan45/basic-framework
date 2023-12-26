@@ -16,7 +16,7 @@ public class RedissonConfig {
         Config config = new Config();
         SingleServerConfig server = config.useSingleServer();
         server.setAddress("redis://" + redisProperties.getHost() + ":" + redisProperties.getPort());
-        if (StringUtils.hasText(redisProperties.getUsername())) {
+        if (StringUtils.hasText(redisProperties.getUsername()) && StringUtils.hasText(redisProperties.getPassword())) {
             server.setUsername(redisProperties.getUsername());
             server.setPassword(redisProperties.getPassword());
         }
