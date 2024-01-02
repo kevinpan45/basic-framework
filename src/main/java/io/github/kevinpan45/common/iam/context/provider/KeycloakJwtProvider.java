@@ -1,10 +1,12 @@
 package io.github.kevinpan45.common.iam.context.provider;
 
 import org.springframework.security.oauth2.jwt.Jwt;
+import org.springframework.stereotype.Component;
 
 import io.github.kevinpan45.common.iam.context.IamContext;
 import io.github.kevinpan45.common.iam.context.JwtProvider;
 
+@Component
 public class KeycloakJwtProvider implements JwtProvider {
 
     @Override
