@@ -13,7 +13,7 @@
 	<artifactId>basic-framework</artifactId>
 	<version>0.0.1</version>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>25</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<dependencies>
