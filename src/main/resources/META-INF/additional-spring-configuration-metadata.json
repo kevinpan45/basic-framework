@@ -1,0 +1,10 @@
+{
+  "properties": [
+    {
+      "name": "management.security.allowed-ips",
+      "type": "java.util.List<java.lang.String>",
+      "description": "List of IP addresses or CIDR ranges allowed to access actuator endpoints. Supports IPv4, IPv6, and CIDR notation.",
+      "defaultValue": ["127.0.0.1", "::1", "10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16"]
+    }
+  ]
+}
