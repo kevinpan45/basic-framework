@@ -26,8 +26,6 @@ public class SecurityConfiguration {
                                 authorize
                                         .requestMatchers("/i18n/**")
                                         .permitAll()
-                                        .requestMatchers("/actuator/**")
-                                        .permitAll()
                                         .anyRequest()
                                         .authenticated())
                 .oauth2ResourceServer(oauth2 -> oauth2.jwt(jwt -> {}));
