@@ -41,7 +41,7 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.18.42</version>
+			<version>1.18.44</version>
 		</dependency>
 
 		<dependency>
@@ -59,7 +59,7 @@
 		<dependency>
 			<groupId>cn.hutool</groupId>
 			<artifactId>hutool-all</artifactId>
-			<version>5.8.42</version>
+			<version>5.8.44</version>
 		</dependency>
 
 		<!-- DB migration flyway -->
@@ -80,8 +80,8 @@
 		<!-- MyBatis ORM framework -->
 		<dependency>
 			<groupId>com.baomidou</groupId>
-			<artifactId>mybatis-plus-spring-boot3-starter</artifactId>
-			<version>3.5.10.1</version>
+			<artifactId>mybatis-plus-spring-boot4-starter</artifactId>
+			<version>3.5.15</version>
 		</dependency>
 	</dependencies>
 
