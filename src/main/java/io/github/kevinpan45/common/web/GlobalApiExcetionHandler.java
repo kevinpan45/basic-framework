@@ -1,14 +1,13 @@
 package io.github.kevinpan45.common.web;
 
+import io.github.kevinpan45.common.exception.BasicException;
+import io.github.kevinpan45.common.exception.BasicRuntimeException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.multipart.MultipartException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-
-import io.github.kevinpan45.common.exception.BasicException;
-import io.github.kevinpan45.common.exception.BasicRuntimeException;
 
 @ControllerAdvice
 public class GlobalApiExcetionHandler extends ResponseEntityExceptionHandler {
@@ -31,6 +30,7 @@ public class GlobalApiExcetionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> handleServerError() {
-        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE.value()).body("System Internal error.");
+        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE.value())
+                .body("System Internal error.");
     }
 }

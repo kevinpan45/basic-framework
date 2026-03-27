@@ -9,19 +9,18 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SpringContextHolder implements ApplicationContextAware, BeanDefinitionRegistryPostProcessor {
+public class SpringContextHolder
+        implements ApplicationContextAware, BeanDefinitionRegistryPostProcessor {
 
     private static ApplicationContext applicationContext;
 
     @Override
-    public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
-
-    }
+    public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory)
+            throws BeansException {}
 
     @Override
-    public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {
-
-    }
+    public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry)
+            throws BeansException {}
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
@@ -37,5 +36,4 @@ public class SpringContextHolder implements ApplicationContextAware, BeanDefinit
     public static <T> T getBean(Class<T> clazz) {
         return applicationContext.getBean(clazz);
     }
-
 }
